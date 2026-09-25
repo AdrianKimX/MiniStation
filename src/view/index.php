@@ -6,6 +6,10 @@
     <title>MS</title>
 </head>
 <body>
+    <?php
     
+    include_once "components/header.php";
+    
+    ?>
 </body>
 </html>
