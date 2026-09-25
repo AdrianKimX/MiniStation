@@ -14,6 +14,6 @@
     <title><?php echo $title;?></title>
 </head>
 <body>
-    
+    <div></div>
 </body>
 </html>
