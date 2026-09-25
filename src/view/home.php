@@ -14,6 +14,10 @@
     <title><?php echo $title;?></title>
 </head>
 <body>
-    <div></div>
+    <div>
+        <?php
+    include_once "src/api/WeatherAPI.php";
+ ?>
+    </div>
 </body>
 </html>

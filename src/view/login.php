@@ -2,7 +2,6 @@
 
 
 
-
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +14,6 @@
 
 </head>
 <body>
-    
+   <?php include_once "components/login-form.php"; ?>
 </body>
 </html>
