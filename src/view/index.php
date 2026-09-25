@@ -6,6 +6,6 @@
     <title>MS</title>
 </head>
 <body>
-    index
+    
 </body>
 </html>
