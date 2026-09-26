@@ -2,7 +2,7 @@
 
 
 
-if(isset($_POST['login'])){
+if(isset($_POST['register'])){
 
 
 $email= trim($_POST['email']);
@@ -10,20 +10,30 @@ $password=trim($_POST['password']);
 
 
 
-$LoginSql= $conn->query("SELECT * FROM users where email={'$email'} and password='{$password}'");
+$RegisterSql= "SELECT * FROM users where email='{$email}'";
 
-if(!$LoginSql){
+if($sqlquery=$conn->query($RegisterSql)){
+  
+if(mysqli_num_rows($sqlquery)>0){
 
-echo "Email or password may incorrect";
+echo "Email already registered";
 
 }else{
 
+$RegisterSql2=$conn->query("INSERT INTO users(email, password)
+values('{$email}', '{$password}')");
+
+if($RegisterSql2){
 header("location: app.php?page=home");
 exit;
 }
 
 }
 
+}else{
+    echo 'error with the query';
+}
+}
 
 ?>
 
@@ -40,7 +50,7 @@ exit;
 </div>
 
 <div class='input-field submit-btn'>
-<input type='submit' name='login' value='Login' required>
+<input type='submit' name='register' value='Register' required>
 </div>
 
 </form>

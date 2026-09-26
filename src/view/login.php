@@ -1,8 +1,4 @@
-<?php
 
-
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,5 +11,11 @@
 </head>
 <body>
    <?php include_once "components/login-form.php"; ?>
+
+      <div class='account-question'>
+
+<a href='?page=register'>No account?</a> 
+
+   </div>
 </body>
 </html>
