@@ -1,19 +1,328 @@
 
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background-color: #f4f4f4;
-}
-
-
-
-form{
-padding:2px;
-margin:auto;
-}
-
-
-
-
+        :root {
+            --bg:        #0B1220;
+            --surface:   #131C2E;
+            --surface-2: #1A2438;
+            --line:      #263148;
+            --text:      #EDEFF3;
+            --muted:     #8B96AC;
+            --gold:      #E8A33D;
+            --teal:      #3FA796;
+        }
+ 
+        * {
+            box-sizing: border-box;
+        }
+ 
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Work Sans', sans-serif;
+            line-height: 1.5;
+        }
+ 
+        h1, h2, h3 {
+            font-family: 'Instrument Serif', serif;
+            font-weight: 400;
+            margin: 0;
+        }
+ 
+        a {
+            color: inherit;
+        }
+ 
+        .wrap {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+ 
+        .btn {
+            display: inline-block;
+            padding: 10px 23px;
+            border-radius: 4px;
+            font-size: 15px;
+            font-weight: 500;
+            text-decoration: none;
+            border: 1px solid transparent;
+        }
+ 
+        .btn-primary {
+            background: var(--gold);
+            color: #17120A;
+        }
+ 
+        .btn-ghost {
+            border-color: var(--line);
+            color: var(--text);
+        }
+ 
+ 
+        /* ============ NAV ============ */
+ 
+        nav.site-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+ 
+        .wordmark {
+            font-family: 'Instrument Serif', serif;
+            font-size: 26px;
+            letter-spacing: 0.5px;
+        }
+ 
+ 
+        /* ============ HERO ============ */
+ 
+        .hero {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 56px;
+            align-items: center;
+            padding: 56px 0 88px;
+        }
+ 
+        .hero h1 {
+            font-size: 56px;
+            line-height: 1.08;
+            max-width: 15ch;
+        }
+ 
+        .hero p {
+            color: var(--muted);
+            font-size: 17px;
+            max-width: 46ch;
+            margin: 22px 0 30px;
+        }
+ 
+        /* Live-reading mock card, styled after the actual weather card */
+        .reading {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 28px;
+        }
+ 
+        .reading-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+ 
+        .reading-place {
+            font-size: 14px;
+            color: var(--muted);
+        }
+ 
+        .reading-body {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 18px;
+        }
+ 
+        .reading-icon {
+            font-size: 44px;
+        }
+ 
+        .reading-temp {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 40px;
+            font-variant-numeric: tabular-nums;
+        }
+ 
+        .reading-cond {
+            color: var(--muted);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+ 
+        .reading-meta {
+            display: flex;
+            gap: 22px;
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px solid var(--line);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12.5px;
+            color: var(--muted);
+        }
+ 
+ 
+        /* ============ FEATURES ============ */
+ 
+        .features {
+            padding: 40px 0 80px;
+            border-top: 1px solid var(--line);
+        }
+ 
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 36px;
+        }
+ 
+        .feature h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+ 
+        .feature p {
+            color: var(--muted);
+            font-size: 15px;
+            margin: 0;
+        }
+ 
+        .feature-mark {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid var(--teal);
+            color: var(--teal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+ 
+ 
+        /* ============ HOW IT WORKS ============ */
+ 
+        .steps {
+            padding: 40px 0 80px;
+            border-top: 1px solid var(--line);
+        }
+ 
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 36px;
+        }
+ 
+        .step-num {
+            font-family: 'IBM Plex Mono', monospace;
+            color: var(--gold);
+            font-size: 13px;
+        }
+ 
+        .step h3 {
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 600;
+            font-size: 17px;
+            margin: 10px 0 8px;
+        }
+ 
+        .step p {
+            color: var(--muted);
+            font-size: 14.5px;
+            margin: 0;
+        }
+ 
+ 
+        /* ============ CTA BAND ============ */
+ 
+        .cta-band {
+            background: var(--surface);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            padding: 60px 0;
+            text-align: center;
+        }
+ 
+        .cta-band h2 {
+            font-size: 34px;
+            margin-bottom: 20px;
+        }
+ 
+ 
+        /* ============ FOOTER ============ */
+ 
+        footer {
+            padding: 32px 0;
+            color: var(--muted);
+            font-size: 13.5px;
+            display: flex;
+            justify-content: space-between;
+        }
+ 
+ 
+        /* ============ POWERED BY ============ */
+ 
+        .powered-by {
+            border-top: 1px solid var(--line);
+            padding: 48px 0;
+        }
+ 
+        .powered-by p {
+            color: var(--muted);
+            font-size: 13.5px;
+            margin: 0 0 24px;
+        }
+ 
+        .stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 36px;
+        }
+ 
+        .stack-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--muted);
+            font-size: 14.5px;
+        }
+ 
+        .stack-item svg {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+            flex-shrink: 0;
+        }
+ 
+        .stack-item:hover {
+            color: var(--text);
+        }
+ 
+ 
+        /* ============ RESPONSIVE ============ */
+ 
+        @media (max-width: 760px) {
+ 
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 32px;
+            }
+ 
+            .hero h1 {
+                font-size: 40px;
+            }
+ 
+            .features-grid,
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+ 
+            footer {
+                flex-direction: column;
+                gap: 8px;
+            }
+ 
+        }
+ 
+        @media (prefers-reduced-motion: reduce) {
+            * { transition: none !important; }
+        }
+ 
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }

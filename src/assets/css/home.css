@@ -1,0 +1,159 @@
+  body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+
+        .api-header{
+            display:flex;
+            vertical-align:middle;
+        }
+
+        .search-container {
+            width: 400px;
+            position: relative;
+        }
+
+
+        #locationSearch {
+
+            width: 100%;
+            padding: 12px;
+
+            font-size: 16px;
+
+            box-sizing: border-box;
+
+            border: 1px solid #ccc;
+            border-radius: 6px;
+
+        }
+
+
+        #results {
+
+            position: absolute;
+
+            width: 100%;
+
+            background: white;
+
+            border: 1px solid #ddd;
+
+            border-top: none;
+
+            max-height: 300px;
+
+            overflow-y: auto;
+
+            z-index: 1000;
+
+        }
+
+
+        .result {
+
+            padding: 10px;
+
+            cursor: pointer;
+
+            border-bottom: 1px solid #eee;
+
+        }
+
+
+        .result:hover {
+            background: #f2f2f2;
+        }
+
+
+        .result-name {
+            font-weight: bold;
+        }
+
+
+        .result-details {
+
+            font-size: 13px;
+
+            color: #666;
+
+        }
+
+
+        /* ========================================
+           WEATHER STATUS CARD
+        ========================================= */
+
+        .weather-card {
+
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            max-width: 400px;
+            margin-top: 20px;
+            padding: 20px;
+
+            background: #f7f9fc;
+            border: 1px solid #dde3ec;
+            border-radius: 10px;
+
+        }
+
+
+        .weather-icon {
+            font-size: 48px;
+            line-height: 1;
+        }
+
+
+        .weather-temp {
+
+            font-size: 32px;
+            font-weight: bold;
+
+        }
+
+
+        .weather-label {
+
+            font-size: 15px;
+            color: #444;
+
+        }
+
+
+        .weather-meta {
+
+            font-size: 13px;
+            color: #777;
+            margin-top: 4px;
+
+        }
+
+
+        .weather-unavailable {
+
+            max-width: 400px;
+            margin-top: 20px;
+            padding: 15px 20px;
+
+            background: #fbeeee;
+            border: 1px solid #f0caca;
+            border-radius: 10px;
+
+            color: #a33;
+            font-size: 14px;
+
+        }
+
+
+        #map {
+
+            margin-top: 25px;
+
+            height: 500px;
+
+            width: 100%;
+
+        }
