@@ -1,12 +1,5 @@
 <?php
-
-
 $province = $_GET['province'] ?? 'Naga';
-
-
-// ========================================
-// OPEN-METEO GEOCODING
-// ========================================
 
 $url = "https://geocoding-api.open-meteo.com/v1/search?" .
        http_build_query([
@@ -26,8 +19,6 @@ $latitude = null;
 $longitude = null;
 $locationName = $province;
 
-
-// Find Philippine result
 if (!empty($data["results"])) {
 
     foreach ($data["results"] as $result) {
@@ -42,10 +33,7 @@ if (!empty($data["results"])) {
         }
     }
 }
-
-
 $weather = null;
-
 
 $weatherCodes = [
     0  => ['label' => 'Clear sky',              'icon' => '☀️'],
@@ -97,9 +85,7 @@ if ($latitude !== null && $longitude !== null) {
     if (!empty($weatherData["current_weather"])) {
         $weather = $weatherData["current_weather"];
     }
-
 }
-
 $weatherInfo = null;
 
 if ($weather !== null) {
@@ -112,49 +98,26 @@ if ($weather !== null) {
     ];
 
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
-
     <title>Philippine Weather</title>
-
-
-    <!-- ========================================
-         LEAFLET
-    ========================================= -->
-
     <link
         rel="stylesheet"
         href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     >
-
-
 </head>
-
-
 <body>
-
-
 <h2>Philippine Weather</h2>
-
-
 <div class='api-header'>
-
     <div class="search-container">
-
         <form action="" method="get">
-
             <input
         type="hidden"
         name="page"
@@ -168,12 +131,8 @@ if ($weather !== null) {
                 placeholder="Search Philippine location..."
                 autocomplete="off"
             >
-
         </form>
-
     </div>
-
-
     <p>
 
         Selected location:
@@ -183,10 +142,6 @@ if ($weather !== null) {
         </strong>
 
     </p>
-
-
-
-
     <?php if ($weather !== null && $weatherInfo !== null): ?>
 
         <div class="weather-card">
@@ -240,14 +195,8 @@ if ($weather !== null) {
 
     </p>
 
-
-
-
     <div id="map"></div>
-
-
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
 
     <script>
 
@@ -265,7 +214,6 @@ if ($weather !== null) {
             [latitude, longitude],
             10
         );
-
 
         L.tileLayer(
             'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
