@@ -156,6 +156,11 @@ if ($weather !== null) {
         <form action="" method="get">
 
             <input
+        type="hidden"
+        name="page"
+        value="home"
+    >
+            <input
                 type="text"
                 id="locationSearch"
                 name="province"
