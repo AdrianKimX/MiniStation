@@ -5,25 +5,6 @@ $province = $_GET['province'] ?? 'Naga';
 
 
 // ========================================
-// PSGC LOCATION LIST
-// ========================================
-
-// Put your PSGC JSON file here.
-// Example:
-// data/psgc.json
-$psgcFile = __DIR__ . '/data/psgc.json';
-
-$psgc = [];
-
-if (file_exists($psgcFile)) {
-    $psgc = json_decode(
-        file_get_contents($psgcFile),
-        true
-    );
-}
-
-
-// ========================================
 // OPEN-METEO GEOCODING
 // ========================================
 
@@ -63,13 +44,9 @@ if (!empty($data["results"])) {
 }
 
 
-// ========================================
-// OPEN-METEO WEATHER (CURRENT CONDITIONS)
-// ========================================
-
 $weather = null;
 
-// WMO weather codes -> human-readable label + emoji
+
 $weatherCodes = [
     0  => ['label' => 'Clear sky',              'icon' => '☀️'],
     1  => ['label' => 'Mainly clear',            'icon' => '🌤️'],
@@ -174,72 +151,74 @@ if ($weather !== null) {
 
 <div class='api-header'>
 
-<div class="search-container">
+    <div class="search-container">
 
-    <input
-        type="text"
-        id="locationSearch"
-        value="<?= htmlspecialchars($province) ?>"
-        placeholder="Search Philippine location..."
-        autocomplete="off"
-    >
+        <form action="" method="get">
 
-    <div id="results"></div>
+            <input
+                type="text"
+                id="locationSearch"
+                name="province"
+                value="<?= htmlspecialchars($province) ?>"
+                placeholder="Search Philippine location..."
+                autocomplete="off"
+            >
 
-</div>
-
-
-<p>
-
-    Selected location:
-
-    <strong>
-        <?= htmlspecialchars($locationName) ?>
-    </strong>
-
-</p>
-
-
-<!-- ========================================
-     WEATHER STATUS
-========================================= -->
-
-<?php if ($weather !== null && $weatherInfo !== null): ?>
-
-    <div class="weather-card">
-
-        <div class="weather-icon">
-            <?= $weatherInfo['icon'] ?>
-        </div>
-
-        <div>
-
-            <div class="weather-temp">
-                <?= htmlspecialchars($weather['temperature']) ?>&deg;C
-            </div>
-
-            <div class="weather-label">
-                <?= htmlspecialchars($weatherInfo['label']) ?>
-            </div>
-
-            <div class="weather-meta">
-                Wind: <?= htmlspecialchars($weather['windspeed']) ?> km/h
-                &nbsp;&middot;&nbsp;
-                As of <?= htmlspecialchars($weather['time']) ?>
-            </div>
-
-        </div>
+        </form>
 
     </div>
+
+
+    <p>
+
+        Selected location:
+
+        <strong>
+            <?= htmlspecialchars($locationName) ?>
+        </strong>
+
+    </p>
+
+
+
+
+    <?php if ($weather !== null && $weatherInfo !== null): ?>
+
+        <div class="weather-card">
+
+            <div class="weather-icon">
+                <?= $weatherInfo['icon'] ?>
+            </div>
+
+            <div>
+
+                <div class="weather-temp">
+                    <?= htmlspecialchars($weather['temperature']) ?>&deg;C
+                </div>
+
+                <div class="weather-label">
+                    <?= htmlspecialchars($weatherInfo['label']) ?>
+                </div>
+
+                <div class="weather-meta">
+                    Wind: <?= htmlspecialchars($weather['windspeed']) ?> km/h
+                    &nbsp;&middot;&nbsp;
+                    As of <?= htmlspecialchars($weather['time']) ?>
+                </div>
+
+            </div>
+
+        </div>
+
+    <?php elseif ($latitude !== null && $longitude !== null): ?>
+
+        <div class="weather-unavailable">
+            Weather data is currently unavailable for this location.
+        </div>
+
+    <?php endif; ?>
+
 </div>
-
-<?php elseif ($latitude !== null && $longitude !== null): ?>
-
-    <div class="weather-unavailable">
-        Weather data is currently unavailable for this location.
-    </div>
-
-<?php endif; ?>
 
 
 <?php if ($latitude !== null && $longitude !== null): ?>
@@ -257,9 +236,7 @@ if ($weather !== null) {
     </p>
 
 
-    <!-- ========================================
-         MAP
-    ========================================= -->
+
 
     <div id="map"></div>
 
@@ -307,157 +284,6 @@ if ($weather !== null) {
 
 <?php endif; ?>
 
-
-<!-- ========================================
-     PSGC SEARCH
-========================================= -->
-
-<script>
-
-    const psgc =
-        <?= json_encode($psgc) ?>;
-
-    const searchInput =
-        document.getElementById('locationSearch');
-
-    const resultsContainer =
-        document.getElementById('results');
-
-    let currentMatches = [];
-
-
-    /*
-     * Renders a list of locations into
-     * the dropdown.
-     */
-    function renderResults(locations) {
-
-        resultsContainer.innerHTML = '';
-        currentMatches = locations;
-
-        locations.forEach(location => {
-
-            const option =
-                document.createElement('div');
-
-            option.className = 'result';
-
-            const name =
-                location.name ?? 'Unknown';
-
-            const province =
-                location.province ?? '';
-
-            option.innerHTML = `
-                <div class="result-name">${name}</div>
-                <div class="result-details">${province}</div>
-            `;
-
-            option.addEventListener('click', function () {
-                goToLocation(location.name);
-            });
-
-            resultsContainer.appendChild(option);
-
-        });
-
-    }
-
-
-    /*
-     * Filters psgc by whatever's typed,
-     * across every field.
-     */
-    function filterLocations(search) {
-
-        if (search.length === 0) {
-            // No text yet — show everything
-            // (or cap it, see note below)
-            return psgc;
-        }
-
-        return psgc.filter(location =>
-            Object.values(location).some(value =>
-                String(value ?? '')
-                    .toLowerCase()
-                    .includes(search)
-            )
-        );
-    }
-
-
-    /*
-     * Show/filter on typing
-     */
-    searchInput.addEventListener('input', function () {
-
-        const search = this.value.trim().toLowerCase();
-
-        renderResults(
-            filterLocations(search).slice(0, 10)
-        );
-
-    });
-
-
-    /*
-     * Show full list when the field is focused,
-     * even before typing anything.
-     */
-    searchInput.addEventListener('focus', function () {
-
-        const search = this.value.trim().toLowerCase();
-
-        renderResults(
-            filterLocations(search).slice(0, 10)
-        );
-
-    });
-
-
-    /*
-     * Hide dropdown when clicking elsewhere
-     */
-    document.addEventListener('click', function (event) {
-
-        if (
-            !searchInput.contains(event.target) &&
-            !resultsContainer.contains(event.target)
-        ) {
-            resultsContainer.innerHTML = '';
-        }
-
-    });
-
-
-    /*
-     * Enter picks the top match
-     */
-    searchInput.addEventListener('keydown', function (event) {
-
-        if (event.key !== 'Enter') return;
-
-        event.preventDefault();
-
-        if (currentMatches.length > 0) {
-            goToLocation(currentMatches[0].name);
-        } else {
-            goToLocation(this.value.trim());
-        }
-
-    });
-
-
-    function goToLocation(name) {
-
-        if (!name) return;
-
-        window.location.href =
-            '?page=home&province=' + encodeURIComponent(name);
-
-    }
-
-</script>
 
 </body>
 
