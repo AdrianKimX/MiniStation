@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MS — Philippine Weather</title>
+    <title>MS | Philippine Weather</title>
 
 </head>
 <body>
@@ -39,7 +39,7 @@
                     <h3>Search anywhere in the country</h3>
                     <p>
                         Uses PSGC location data, so you can find your
-                        own barangay or municipality — not just the
+                        own barangay or municipality, not just the
                         nearest big city.
                     </p>
                 </div>
@@ -88,14 +88,6 @@
                         <path d="M13.5 17.5h5a3 3 0 0 0 0-6 5 5 0 0 0-9.6-1.6"></path>
                     </svg>
                     <span>Open-Meteo</span>
-                </div>
- 
-                <div class="stack-item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"></path>
-                        <circle cx="12" cy="9.5" r="2.5"></circle>
-                    </svg>
-                    <span>PSGC</span>
                 </div>
  
                 <div class="stack-item">
