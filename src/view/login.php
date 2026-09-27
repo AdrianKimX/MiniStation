@@ -10,12 +10,20 @@
 
 </head>
 <body>
-   <?php include_once "components/login-form.php"; ?>
+   <div class='login-main'>
+   <?php
+   if(isset($_SESSION['user_id'])){
+header('location: ?page=home');
+
+
+}  
+ echo  $_SESSION['user_id'];
+   include_once "components/login-form.php"; ?>
 
       <div class='account-question'>
 
 <a href='?page=register'>No account?</a> 
-
+</div>
    </div>
 </body>
 </html>

@@ -17,6 +17,15 @@
     <div>
         <?php
     include_once "src/api/WeatherAPI.php";
+
+
+
+$LoginSql= $conn->query("SELECT * FROM users where email='k@gmail.com'");
+
+    $row=mysqli_fetch_assoc($LoginSql);
+$_SESSION['user_id']= $row['user_id'];
+echo $_SESSION['user_id'];
+
  ?>
     </div>
 </body>

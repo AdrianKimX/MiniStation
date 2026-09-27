@@ -1,4 +1,11 @@
+
+<link rel='stylesheet'  href='src/assets/css/main.css'>
+<link rel='stylesheet'  href='src/assets/css/login.css'>
+<link rel='stylesheet'  href='src/assets/css/home.css'>
+
+
 <?php
+
 
 
 require "src/db/DBconnection.php";
@@ -11,6 +18,8 @@ $page = $_GET['page'];
 
 $title="MS | $page";
 
+
+session_start();
 
 
 

@@ -10,14 +10,15 @@ $password=trim($_POST['password']);
 
 
 
-$LoginSql= $conn->query("SELECT * FROM users where email={'$email'} and password='{$password}'");
+$LoginSql= $conn->query("SELECT * FROM users where email='{$email}' and password='{$password}'");
 
 if(!$LoginSql){
 
 echo "Email or password may incorrect";
 
 }else{
-
+    $row=mysqli_fetch_assoc($LoginSql);
+$_SESSION['user_id']= $row['user_id'];
 header("location: app.php?page=home");
 exit;
 }
