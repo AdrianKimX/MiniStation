@@ -18,8 +18,6 @@ require "src/db/DBconnection.php";
 
 if(isset($_GET['page'])){
 
-
-
 $page = $_GET['page'];
 
 $title="MS | $page";
@@ -41,7 +39,7 @@ include_once "src/view/index.php";
 }
 
 }else{
-
+$title='MS';
 include_once "src/view/index.php";
 
 }

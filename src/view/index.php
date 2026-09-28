@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MS | Philippine Weather</title>
+    <title><?php echo $title;?></title>
 
 </head>
 <body>
@@ -21,12 +21,6 @@
             <a href="?page=home" class="btn btn-ghost">Check the weather</a>
         </nav>
 
-
-        <!-- ============ HERO ============ -->
-
-     
-
-        <!-- ============ FEATURES ============ -->
 
         <section class="features">
 
