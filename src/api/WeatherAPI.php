@@ -2,18 +2,9 @@
 
 $province = $_GET['province'] ?? 'Naga';
 
-/* ============================================================
-   GOOGLE APPS SCRIPT WEB APP
-   Replace this with your actual /exec URL
-   ============================================================ */
-
 $googleAppsScriptUrl =
     'https://script.google.com/macros/s/AKfycbyNM-3_6-9nJDlvBJWcDAD7AGhpRaiHWkl9htwOIcIwWuDTY3PD5rGWp6Ael4a6LeNJ/exec';
 
-
-/* ============================================================
-   OPEN-METEO GEOCODING
-   ============================================================ */
 
 $url = "https://geocoding-api.open-meteo.com/v1/search?" .
        http_build_query([
@@ -48,10 +39,6 @@ if (!empty($data["results"])) {
     }
 }
 
-
-/* ============================================================
-   WEATHER
-   ============================================================ */
 
 $weather = null;
 
@@ -200,9 +187,6 @@ $weatherCodes = [
 ];
 
 
-/* ============================================================
-   OPEN-METEO WEATHER API
-   ============================================================ */
 
 if ($latitude !== null && $longitude !== null) {
 
@@ -246,11 +230,6 @@ if ($latitude !== null && $longitude !== null) {
     }
 }
 
-
-/* ============================================================
-   WEATHER INFORMATION
-   ============================================================ */
-
 $weatherInfo = null;
 
 if ($weather !== null) {
@@ -287,112 +266,11 @@ if ($weather !== null) {
         Philippine Weather
     </title>
 
-
-    <!-- =====================================================
-         LEAFLET
-         ===================================================== -->
-
     <link
         rel="stylesheet"
         href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     >
 
-
-    <!-- =====================================================
-         MINISTATION AUTOMATION STYLE
-         ===================================================== -->
-
-    <style>
-
-        .confirmation-card {
-
-            margin-top: 20px;
-
-            padding: 20px;
-
-            background: #f5f5f5;
-
-            border-radius: 10px;
-
-            max-width: 500px;
-        }
-
-
-        .confirmation-card h3 {
-
-            margin-top: 0;
-        }
-
-
-        .confirmation-card form {
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 12px;
-        }
-
-
-        .confirmation-card label {
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 6px;
-
-            font-weight: bold;
-        }
-
-
-        .confirmation-card input[type="email"] {
-
-            padding: 10px;
-
-            font-size: 16px;
-
-            border: 1px solid #ccc;
-
-            border-radius: 6px;
-        }
-
-
-        .confirmation-card button {
-
-            padding: 10px 15px;
-
-            font-size: 16px;
-
-            cursor: pointer;
-
-            border: none;
-
-            border-radius: 6px;
-
-            background: #222;
-
-            color: white;
-        }
-
-
-        .confirmation-card button:hover {
-
-            opacity: .85;
-        }
-
-
-        #sendingMessage {
-
-            display: none;
-
-            margin-top: 10px;
-
-            color: #555;
-        }
-
-
-    </style>
 
 </head>
 
@@ -406,11 +284,6 @@ if ($weather !== null) {
 
 
 <div class="api-header">
-
-
-    <!-- =====================================================
-         LOCATION SEARCH
-         ===================================================== -->
 
     <div class="search-container">
 
@@ -436,12 +309,7 @@ if ($weather !== null) {
 
         </form>
 
-    </div>
-
-
-   
-
-    <p>
+        <p>
 
         Selected location:
 
@@ -452,6 +320,12 @@ if ($weather !== null) {
         </strong>
 
     </p>
+    </div>
+
+
+   
+
+    
 
 
 
@@ -515,11 +389,6 @@ if ($weather !== null) {
 
         </div>
 
-
-        <!-- =================================================
-             GOOGLE APPS SCRIPT AUTOMATION
-             ================================================= -->
-
         <div class="confirmation-card">
 
             <h3>
@@ -544,9 +413,6 @@ if ($weather !== null) {
                 onsubmit="showSendingMessage()"
             >
 
-
-                <!-- LOCATION -->
-
                 <input
                     type="hidden"
                     name="location"
@@ -556,7 +422,6 @@ if ($weather !== null) {
                 >
 
 
-                <!-- LATITUDE -->
 
                 <input
                     type="hidden"
@@ -567,8 +432,6 @@ if ($weather !== null) {
                 >
 
 
-                <!-- LONGITUDE -->
-
                 <input
                     type="hidden"
                     name="longitude"
@@ -576,9 +439,6 @@ if ($weather !== null) {
                         $longitude
                     ) ?>"
                 >
-
-
-                <!-- TEMPERATURE -->
 
                 <input
                     type="hidden"
@@ -588,9 +448,6 @@ if ($weather !== null) {
                     ) ?>"
                 >
 
-
-                <!-- WEATHER CONDITION -->
-
                 <input
                     type="hidden"
                     name="condition"
@@ -599,8 +456,6 @@ if ($weather !== null) {
                     ) ?>"
                 >
 
-
-                <!-- WIND -->
 
                 <input
                     type="hidden"
@@ -621,9 +476,6 @@ if ($weather !== null) {
                     ) ?>"
                 >
 
-
-                <!-- EMAIL -->
-
                 <label>
 
                     Email address
@@ -637,8 +489,6 @@ if ($weather !== null) {
 
                 </label>
 
-
-                <!-- SUBMIT -->
 
                 <button
                     type="submit"
@@ -783,11 +633,6 @@ if ($weather !== null) {
     name="googleAppsScriptFrame"
     style="display:none;"
 ></iframe>
-
-
-<!-- ============================================================
-     AUTOMATION JAVASCRIPT
-     ============================================================ -->
 
 <script>
 
