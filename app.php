@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/src/assets/css/home.css">
 
 <?php
-require_once 'src/db/config.local.php';
+require 'src/db/config.local.php';
 require 'src/db/DBconnection.php';
 
 
