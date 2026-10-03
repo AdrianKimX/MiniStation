@@ -6,6 +6,6 @@
     <title><?php echo $title;   ?></title>
 </head>
 <body>
-    
+      <?php  include_once "components/login-form.php"; ?>
 </body>
 </html>
