@@ -11,6 +11,7 @@
 
 <?php
 
+require 'src/db/DBconnection.php';
 
 $routes = [
     'home' => 'src/view/home.php',
@@ -26,6 +27,7 @@ if (!is_string($page)) {
 if ($page !== '' && isset($routes[$page])) {
     $title = 'MS | ' . htmlspecialchars($page, ENT_QUOTES, 'UTF-8');
     include_once $routes[$page];
+  
 }else {
     $title = 'MS';
     include_once 'src/view/index.php';
