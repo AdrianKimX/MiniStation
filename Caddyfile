@@ -4,6 +4,13 @@
 
 :{$PORT} {
     root * /app
+
+    # Never expose server-side code, config or repo files
+    @blocked path /src/db/* /src/data/* /src/api/* /src/view/* /Caddyfile /Dockerfile.vercel /vercel.json /.git/* /.env
+    respond @blocked 404
+
+    # Serves index.php by default; CSS under /src/assets is served as static files
     php_server
-    file_server
 }
+
+
