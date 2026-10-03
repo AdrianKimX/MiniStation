@@ -1,2 +1,2 @@
 # MiniStation
-This web app shows the weather update and Earthquake history
+This web app shows the weather update 
