@@ -1,11 +1,11 @@
 <?php 
-if(session_start()){
+/*if(session_start()){
   echo "Session Started";
 
 }else{
     echo "Session not Started";
 }
-
+*/
 if(isset($_POST['login'])){
 
 
