@@ -11,9 +11,9 @@
 
 <?php
 
-//require 'src/db/DBconnection.php';
+require 'src/db/DBconnection.php';
 
-phpinfo();
+
 
 $routes = [
     'home' => 'src/view/home.php',

@@ -4,6 +4,8 @@
 # Credentials and local config
 src/db/DBconnection.php
 .env
+src/db/config.local.php
+src/db/ca.pem
 
 # OS / editor junk
 .DS_Store
