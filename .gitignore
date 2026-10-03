@@ -1,0 +1,11 @@
+# Archives (src.zip leaked the DB password before)
+*.zip
+
+# Credentials and local config
+src/db/DBconnection.php
+.env
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.vscode/
