@@ -1,0 +1,11 @@
+DirectoryIndex app.php
+
+# Block direct access to server-side code and data
+RedirectMatch 404 ^/src/(db|data|api|view)/
+
+# Hide dotfiles and archives if any get uploaded by mistake
+<FilesMatch "^\.(git|env)|\.(zip|sql|gs)$">
+    Require all denied
+</FilesMatch>
+
+Options -Indexes
